@@ -1,0 +1,44 @@
+<!-- First Page in the application, giving options for admin and student/parent login -->
+<html>
+<style>
+.buttons{
+display:inline-block;
+padding:0.3em 1.2em;
+margin:0 0.3em 0.3em 0;
+border-radius:2em;
+box-sizing: border-box;
+text-decoration:none;
+font-family:'Roboto',sans-serif;
+font-weight:300;
+color:black;
+background-color:#4eb5f1;
+text-align:center;
+transition: all 0.2s;
+}
+</style>
+<script>
+function redirectToSecurityPage(){
+console.log('security');
+	location.href="security.html";
+}
+function redirectToCoursePage(){
+console.log('course');
+	location.href="adminUpload.html";
+}
+</script>
+<div id="bkgrnd"style="background-image: url('bkgd.jpg');background-size: cover;height: 100%;position: fixed;width: 100%;">
+ <marquee width="100%" direction="right" height="100px">
+<h1 style="color:#dc2f67;">Welcome to iTots!</h1>
+</marquee>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<span><img src="secAuth.png"  height="150" width="180" style="margin-left:28%;"/></span><span> <img src="course.png"  height="150" width="180" style="margin-left:20%;"/></span><br/><input class="buttons" type="button" value="Security" onclick="redirectToSecurityPage();" style="margin-left:31%;"/>
+<input type="button" class="buttons" value="Learning courses" onclick="redirectToCoursePage();"  style="margin-left:26%;"/>
+
+</html>
+
+</div>
+</html>

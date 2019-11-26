@@ -1,0 +1,28 @@
+<!-- First Page in the application, giving options for admin and student/parent login -->
+<html>
+<body>
+<script>
+function redirectToAdminLoginPage(){
+console.log('admin login');
+//Uncomment this line and give link to the admin login page
+	location.href="adminpage.html";
+}
+function redirectToUserLogin(){
+console.log('student login');
+	//uncomment this line and give link to the cognito user login page
+	location.href="https://project2.auth.us-east-1.amazoncognito.com/login?response_type=token&client_id=5p39s85v7mikvqbak1gmc80f29&redirect_uri=https://d2aed6h3zvv2he.cloudfront.net/index.html";
+}
+</script>
+<div id="bkgrnd"style="background-image: url('bkgd.jpg');background-size: cover;height: 100%;position: fixed;width: 100%;">
+ <marquee width="100%" direction="right" height="100px">
+<h1 style="color:#dc2f67;">Welcome to iTots!</h1>
+</marquee>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<span><img onclick="redirectToAdminLoginPage();" src="adminlogin.jpg"  height="150" width="180" style="margin-left:28%;"/></span><span> <img src="studentlogin.png" onclick="redirectToUserLogin();"  height="150" width="180" style="margin-left:20%;"/></span>
+</div>
+</body>
+</html>
