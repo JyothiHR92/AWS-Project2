@@ -1,0 +1,68 @@
+<!-- HTML Page that is displayed when user logs in through Cognito -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="script.js" defer></script>
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.283.1.min.js"></script>
+<script src="./app.js"></script>
+  <script>
+  function getHtml(template) {
+          return template.join('\n');
+       }
+function myFunction() {
+addUserToGroup();
+  listFolder();
+}	
+function logout(){
+location.href="https://project2.auth.us-east-1.amazoncognito.com/login?response_type=token&client_id=5p39s85v7mikvqbak1gmc80f29&redirect_uri=https://d2aed6h3zvv2he.cloudfront.net/index.html";
+	
+}
+function courses(){
+	location.href="http://ec2-34-207-163-214.compute-1.amazonaws.com:3000/";
+}
+</script>
+  <link href="styles.css" rel="stylesheet">
+  <title>Tabs</title>
+</head>
+<body onload="myFunction()" >
+<div id="bkgrnd"style="background-image: url('bkgd.jpg');background-size: cover;height: 100%;position: fixed;width: 100%;">
+	<marquee width="100%" direction="right" height="100px">
+		<h1 style="color:#dc2f67;">Welcome to iTots!</h1>
+	</marquee>
+	<input type="button" onclick="logout();" value="Logout" class="buttons" style="float:right;margin-right:3%;"/>
+ <br/><br/><br/><br/>
+<!--put type="button" class="buttons" onClick="abc();" value="Logout" style="float: right;;margin-right: 4%;margin-top: -3%;">-->
+  <ul class="tabs">
+	<li style="color:blueviolet;font-weight:bold;" data-tab-target="#aboutUs" class="active tab">About Us</li>
+    <li style="color:forestgreen;font-weight:bold;" data-tab-target="#home" class=" tab">Manage Profile</li>
+    <li style="color:orangered;font-weight:bold;" data-tab-target="#pricing" class="tab">Courses</li>
+  </ul>
+	
+  <div class="tab-content">
+    <div id="aboutUs" data-tab-content class="active">
+
+      <h1 style="color:blueviolet;text-decoration-line:underline;">About Us</h1>
+      <h2 style="color:blueviolet;"> At iTots what we offer is complete care and security for your child. We take full precaution to take care of your children.Along with the safety, we also have learning courses designed for your little one. <br/>
+	  To Manage your profile, and upload images of people authorized to pick up your child click on the 'Manage Profile' Tab.<br/>
+	  To look into the courses we offer for your children click on the 'Courses' Tab.</h2>
+	  
+	  </div>
+    <div id="home" data-tab-content >
+
+      <h1 style="color:forestgreen;text-decoration-line:underline;">Manage Profile</h1>
+      <div id="app"></div>
+	  </div>
+ 
+    <div style="color:orangered;text-decoration-line:underline;" id="pricing" data-tab-content>
+      <h1>Courses</h1>
+	  <!-- Insert code here for course access-->
+      <a style="color:orangered;" href="http://ec2-34-207-163-214.compute-1.amazonaws.com:3000/">Click here to go to the Learning Courses!</a>
+    </div>
+     
+  </div>
+  </div>
+</body>
+</html>
