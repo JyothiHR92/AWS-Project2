@@ -1,0 +1,86 @@
+<!-- Page for Admin Login-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+    <script type="text/javascript">
+        
+
+        $(document).ready(function() {
+
+            var customerViewModel = function() {
+            var self = this;
+			var firstN;
+            self.firstName = ko.observable("");
+            self.lastName = ko.observable("");
+            self.emailId = ko.observable("");
+			self.pwd = ko.observable("");
+            self.searchKey = ko.observable("");
+			self.searchKey1 = ko.observable("");
+			
+            self.getAdminDetails = function () {   
+			
+			
+                $.ajax({
+					// URL of the API Gateway created in AWS
+                    url: 'https://pcunuhkfod.execute-api.us-east-1.amazonaws.com/prod/getadmindetails',
+                    cache: false,
+                    type: 'GET',                   
+                    data: { "EmailID": self.searchKey() },
+                    success: function (data) {
+						if(JSON.stringify(data) != '{}') {
+                        
+						
+						var pw = document.getElementById("txtSearchKey1").value;
+						if(pw == data.Item.Password){
+								location.href="adminUpload.html";
+							
+						}
+						else {
+							if(pw == ''){
+								alert('Please enter a password')
+							}
+							else{
+								alert('Incorrect Password');
+							}
+						}
+						}
+                    }
+                });
+            }
+        }
+
+            var viewModel = new customerViewModel();
+            ko.applyBindings(viewModel);
+         });
+
+       
+    </script>
+</head>
+<body class="divbody">
+<h1 class="h1css">Welcome to ITOTS!</h1>
+<div class="pollymargin">
+<h2>Welcome Admin User! </h2>
+Please enter User Name and Password to Login.<br/><br/><br/>
+    <table>
+        <tr>
+            <td>User Name:</td>
+            <td><input type="text" id="txtSearchKey" data-bind="value : searchKey"/></td>
+        </tr>
+		<tr>
+            <td>Password:</td>
+            <td><input type="password" id="txtSearchKey1" data-bind="value : searchKey1"/></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="Login" data-bind="click: $root.getAdminDetails()" style="margin-left:140%;" class="buttons"/></td>
+        </tr>
+    </table>
+
+    
+  </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+      <head>
+          <link rel="stylesheet" href="styles.css">
+
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.283.1.min.js"></script>
+    <script src="./app.js"></script>
+    
+
+    <script>
+        function getHtml(template) {
+             return template.join('\n');
+          }
+
+          //call the function in the JS to list Images
+          listImages();  
+    </script> 
+  </head>    
+  <h1 class="h1css">Welcome to ITOTS!</h1>
+  <body class="divbody">
+  <label class="logoutPos">
+          <input type=button onClick="location.href='adminpage.html'" value='Logout' class="buttons"> 
+  </label>
+    <div id="adminPage" class="margin"></div>    
+  </body>   
+</html>    

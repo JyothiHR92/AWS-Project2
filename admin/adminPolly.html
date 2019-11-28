@@ -1,0 +1,109 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="styles.css">
+    
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
+    <script src="./scripts.js" defer></script>
+    
+   
+    <script>
+        $(document).ready(function(){
+          console.log('this is run on page load');
+          $.ajax({
+            url: API_ENDPOINT + '?postId=*',
+            cache: false,
+            type: 'GET',
+            success: function (response) {
+    
+              $('#posts tr').slice(1).remove();
+    
+              jQuery.each(response, function(i,data) {
+    
+                var player = "<audio controls><source src='" + data['url'] + "' type='audio/mpeg'></audio>"
+    
+                if (typeof data['url'] === "undefined") {
+                  var player = ""
+                }
+    
+                $("#posts").append("<tr> \
+                    <td>" + data['id'] + "</td> \
+                    <td>" + data['voice'] + "</td> \
+                    <td>" + data['text'] + "</td> \
+                    <td>" + data['status'] + "</td> \
+                    <td>" + player + "</td> \
+                    </tr>");
+               
+              });
+            },
+            error: function () {
+                alert("error");
+            }
+        });
+      });
+  
+  
+      </script>
+
+   
+    
+  </head>
+  <h1 class="h1css">Welcome to ITOTS!</h1>
+  <body class="divbody">
+  <label class="logoutPos">
+          <input type=button onClick="location.href='adminpage.html'" value='Logout' class="buttons"> 
+  </label>
+  <br/><br/>
+   <h2>Upload Content for Language Course</h2>
+    <div id="content">
+
+      Voice:
+
+      <select id="voiceSelected">
+        <option value="Aditi">Aditi [Hindi]</option>
+        <option value="Joanna">Joanna [English]</option>
+        <option value="Enrique">Enrique [Spanish]</option>
+        <option value="Marlene">Marlene [German]</option>
+        <option value="Mathieu">Mathieu [French]</option>
+
+      </select>
+
+      
+
+      <span id="postIDreturned"></span>
+    </br></br>
+    
+    <textarea id ="postText"></textarea>
+    <br/><br/>
+    <span id="charCounter">Characters: 0</span>
+  
+    <input type="submit" value="Upload" id="sayButton" class="buttons">
+  
+    </br></br>
+      Provide post ID which you want to retrieve: <input type="text" id="postId"> <input type="submit" class="buttons" value="Search" id="searchButton">
+      <br/>
+    </div>
+
+
+
+      <table id="posts">
+        <colgroup>
+          <col style="width:10%">
+          <col style="width:7%">
+          <col style="width:45%">
+          <col style="width:8%">
+          <col style="width:30%">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Post ID</th>
+            <th>Voice</th>
+            <th>Post</th>
+            <th>Status</th>
+            <th>Player</th>
+          </tr>
+        </thead>
+      </table>
+
+      
+  </body>
+</html>
