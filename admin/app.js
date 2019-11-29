@@ -2,8 +2,8 @@ var folderBucketName = 'studentcourse';
 var bucketRegion = 'us-east-1';
 
 
-const ID = '---your_key---';
-const SECRET = '---your_secret---';
+const ID = '---your-key---';
+const SECRET = '---your-secret---';
 
 //update config
 AWS.config.update({
@@ -123,10 +123,12 @@ AWS.config.update({
     
 	var courseImg = data.Contents.map(function(res){
 		//check if user has uploaded image, and if he has, then display it
-		 var fileKey = res.Key;
+     var fileKey = res.Key;
+     
+    
 		
      var filName = fileKey.replace(folderKey, '');
-     
+    
 		 if(filName != '')
 		 {
 				imageUploaded = true;
@@ -186,8 +188,31 @@ function addFile(folderName) {
     if (!files.length) {
       return alert('Please choose a file to upload first.');
     }
+    
     var file = files[0];
     var fileName = file.name;
+
+    for(var i=5; i<100; i++)
+    {
+    var substring = folderName + '_'+i;
+
+    if(fileName.toUpperCase().includes(substring.toUpperCase()))
+    {
+      return alert('The maximum number of slides per learning course has reached.');
+    }
+    }
+
+    for(var i=9; i<100; i++)
+    {
+    var quizstring = folderName + '_quiz_'+i;
+   
+    if(fileName.toUpperCase().includes(quizstring.toUpperCase()))
+    {
+      return alert('The maximum number of slides per quiz course has reached.');
+    }
+    }
+
+
     var folderKey = encodeURIComponent(folderName) + '/';
     var fileKey = folderKey + fileName;
     alert('fileKey: ' + fileKey);
