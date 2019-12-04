@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+  </head>
+  <body class="divbody">
+    <h1 class="h1css">Welcome to ITOTS!</h1>  
+    <div id="finishPage" class="margin"> 
+    <h1><%= title %></h1>
+    <label class="logoutPos">
+      <input type=button onClick="location.href='https://project2.auth.us-east-1.amazoncognito.com/login?response_type=token&client_id=5p39s85v7mikvqbak1gmc80f29&redirect_uri=https://d2aed6h3zvv2he.cloudfront.net/index.html'" value='Logout' class="buttons"> 
+    </label>
+    <p>Course Completed<%= title %></p>
+    <table>
+      <tr>
+          <td>
+              <input type=button onClick="location.href='http://ec2-34-207-163-214.compute-1.amazonaws.com:3000/pollyCourse/'" value='Home' class="buttons">
+          </td>
+      </tr>
+    </table>
+    </div>
+  </body>
+</html>

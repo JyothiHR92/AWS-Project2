@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+  </head>
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.283.1.min.js"></script>
+  <script>
+      var categoryName = '<%=folder%>';
+      var idNum = <%=id%>
+      var bucketName = 'studentcourse'
+      var countFiles = 0;
+      var bucketRegion = 'us-east-1';
+      AWS.config.update({
+        region: bucketRegion,
+        accessKeyId : 'AKIAWYV5ST2BIFONE2IN',
+        secretAccessKey : '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'
+       });
+      var s3 = new AWS.S3({
+        params: {Bucket: bucketName}
+      });
+    console.log('idnum:'+idNum);
+
+ function showButton(categoryName, idNum)
+  {
+    var folderKey = encodeURIComponent(categoryName) + '/'; //use FolderName here
+  s3.listObjects({Prefix: folderKey}, function(err, data) {
+   
+    if (err) {
+      return alert('There was an error viewing your folder: ' + err.message);
+    }
+    var href = this.request.httpRequest.endpoint.href;
+    var bucketUrl = href + bucketName + '/';
+ //   var countFiles = 0;
+    
+  var courseImg = data.Contents.map(function(res){
+    //check if user has uploaded image, and if he has, then increment count
+     var fileKey = res.Key;
+     var filName = fileKey.replace(folderKey, '');
+     var substring = categoryName + '_quiz'; //use FolderName here
+    
+     if(filName != '' && !filName.toUpperCase().includes(substring.toUpperCase()))
+     {
+       countFiles++;
+        
+     }
+//    console.log('countFiles:' + countFiles);
+    });
+console.log('countFiles:' + countFiles);
+if(countFiles == idNum) //put value of ur slidenumber instead of 4
+  {
+  	document.getElementById("next").style.visibility = "hidden";
+  }  
+});
+}
+ showButton(categoryName, idNum);
+</script>
+  <body class="divbody">
+    <h1 class="h1css">Welcome to ITOTS!</h1>
+    <label class="logoutPos">
+        <input type=button onClick="location.href='https://project2.auth.us-east-1.amazoncognito.com/login?response_type=token&client_id=5p39s85v7mikvqbak1gmc80f29&redirect_uri=https://d2aed6h3zvv2he.cloudfront.net/index.html'" value='Logout' class="buttons"> 
+    </label>
+    <div id="learningslidePage" class="learningmargin"> 
+    <h1><%= title %></h1>
+    </div>
+    <div class="textmargin">
+    <h2><%=text%></h2>
+    </div>
+    <br/><br/>
+    <div class="imagemargin">
+        <img src = "<%=S3url%>" height="400px" width="600px"/>
+        <input type=button onClick="location.href='<%-server_url%>'" value=Home class="buttons">
+        <input type=button onClick="location.href='<%=next_url%>'" value=Next class="buttons" id="next">
+    </div>    
+  </body>
+</html>

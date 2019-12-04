@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learning Course</title>
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.283.1.min.js"></script>
+    <script>
+var server_url1='<%=server_url%>';
+var folderBucketName = 'studentcourse';
+var bucketRegion = 'us-east-1';
+
+var config = require('/Users/pushkar/iTotspolly/config.js');
+const ID = 'ur  key';
+const SECRET = 'ur secret';
+
+//update config
+AWS.config.update({
+    region: bucketRegion,
+    accessKeyId : config.key,
+    secretAccessKey : config.secret
+  });
+
+
+  var s3 = new AWS.S3({
+    params: {Bucket: folderBucketName}
+  });
+
+
+
+var queryString = decodeURIComponent(window.location.search);
+queryString = queryString.substring(1);
+var queries = queryString.split("&");
+
+  function listFolders() {
+    s3.listObjects({Delimiter: '/'}, function(err, data) {
+      if (err) {
+        return alert('There was an error showing your courses folder: ' + err.message);
+      } else {
+        var folders = data.CommonPrefixes.map(function(commonPrefix) {
+          var prefix = commonPrefix.Prefix;
+          var folderName = decodeURIComponent(prefix.replace('/', ''));
+          return getHtml([
+              '<button onclick="location.href=\'http://localhost:3000/learningCourse/' + folderName + '\'" style="border:solid 0px #e6b215;border-radius:8px;font-size:16px;color:#ffffff;padding:5px 18px;background-color:#FF9900;cursor:pointer;">' + folderName + '</button>',          ]);
+        });
+        var htmlTemplate = [
+            '<h1>Learning Course</h1>',
+          '<ul>',
+            getHtml(folders),
+          '</ul>',
+        '<br/>',
+        '<br/>',
+        ]
+        document.getElementById('learninghomePage').innerHTML = getHtml(htmlTemplate);
+      }
+    });
+  }
+      function getHtml(template) {
+           return template.join('\n');
+        }
+
+        //call the function in the JS to list Images
+        listFolders();
+  </script>
+  </head>
+  <body class="divbody">
+    <label class="logoutPos">
+        <input type=button onClick="location.href='http://localhost:3000/pollyCourse/'" value='Logout' class="buttons">
+    </label>
+    <div id="learninghomePage" class="margin">
+  </div>
+  </body>
+</html>
