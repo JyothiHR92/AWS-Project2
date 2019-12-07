@@ -7,10 +7,8 @@ Course: [Cloud Technologies](http://info.sjsu.edu/web-dbgen/catalog/courses/CMPE
 Professor [Sanjay Garje](https://www.linkedin.com/in/sanjaygarje/)
 
 Students: 
-[Manasi Sadanand Pai](https://www.linkedin.com/in/manasi-pai-527421198/)
-
-[Prarthana Hemanth](https://www.linkedin.com/in/prarthanahemanth/)
-
+[Manasi Sadanand Pai](https://www.linkedin.com/in/manasi-pai-527421198/) ,
+[Prarthana Hemanth](https://www.linkedin.com/in/prarthanahemanth/) ,
 [Akanksha Jaiswal](https://www.linkedin.com/in/akanksha-jaiswal-53395960/)
 
 
