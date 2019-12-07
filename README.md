@@ -24,7 +24,8 @@ ITots is an app that provides both these features. The security is taken care of
 Any parent, would love it if their child can learn some basic things while at the day care center. For this we have language and learning courses to teach the child. Since this is catered for very young children, the teaching is done using audio and images.
 
 Sample Screen Shots:
-
+Landing Page
+(https://github.com/prar1612/AWS-Project2/blob/master/Images/LandingPage.png)
 
 
 
