@@ -1,9 +1,9 @@
 
 University Name: http://www.sjsu.edu/
 
-Course: Cloud Technologies http://info.sjsu.edu/web-dbgen/catalog/courses/CMPE281.html
+Course: [Cloud Technologies](http://info.sjsu.edu/web-dbgen/catalog/courses/CMPE281.html)
 
-Professor Sanjay Garje https://www.linkedin.com/in/sanjaygarje/
+Professor [Sanjay Garje](https://www.linkedin.com/in/sanjaygarje/)
 
 Students: 
 Manasi Sadanand Pai
