@@ -7,10 +7,14 @@ Professor Sanjay Garje https://www.linkedin.com/in/sanjaygarje/
 
 Students: 
 Manasi Sadanand Pai
+
 Prarthana Hemanth
+
 Akanksha Jaiswal
 
+
 Project Introduction:
+
 ITots is an application for any day care center. As parents, what is it that we are looking for while opting for a day care center for your little one? 
 
 The main aspects that one would be looking for are:
@@ -28,7 +32,50 @@ Sample Screen Shots:
 Landing Page:
 ![Landing Page](https://github.com/prar1612/AWS-Project2/blob/master/Images/LandingPage.png)
 
+Admin Login Page:
+![Admin Login Page](https://github.com/prar1612/AWS-Project2/blob/master/Images/adminLogin.png)
 
+Admin Landing Page:
+![Admin Landing Page](https://github.com/prar1612/AWS-Project2/blob/master/Images/adminLandingPage.png)
+
+Security – User asked to enter username:
+![Security](https://github.com/prar1612/AWS-Project2/blob/master/Images/security.png)
+
+Webcam to click picture:
+![Webcam](https://github.com/prar1612/AWS-Project2/blob/master/Images/webcam.png)
+
+On successful authentication:
+![Authentication](https://github.com/prar1612/AWS-Project2/blob/master/Images/authentication.png)
+
+Learning Course – Admin can upload new content:
+![Admin Learning](https://github.com/prar1612/AWS-Project2/blob/master/Images/adminLearning.png)
+
+Admin can upload image to any learning course:
+![Admin Upload Learning](https://github.com/prar1612/AWS-Project2/blob/master/Images/adminLearning_1.png)
+
+Admin can upload content to the language course:
+![Admin Language](https://github.com/prar1612/AWS-Project2/blob/master/Images/adminLanguage.png)
+
+Cognito login for user to login:
+![Cognito](https://github.com/prar1612/AWS-Project2/blob/master/Images/cognito.png)
+
+User Landing Page:
+![User Landing](https://github.com/prar1612/AWS-Project2/blob/master/Images/userLandingPage.png)
+
+Parent can upload images of authorized people:
+![User Upload](https://github.com/prar1612/AWS-Project2/blob/master/Images/parentAuth.png)
+
+Courses – Learning Course:
+![Learning Course](https://github.com/prar1612/AWS-Project2/blob/master/Images/LerningCourses.png)
+
+Sample Course:
+![Sample Course](https://github.com/prar1612/AWS-Project2/blob/master/Images/LerningCourses_1.png)
+
+Sample Quiz:
+![Sample Quiz](https://github.com/prar1612/AWS-Project2/blob/master/Images/quiz.png)
+
+Sample Language Course:
+![Sample Language Course](https://github.com/prar1612/AWS-Project2/blob/master/Images/languageCourse.png)
 
 
 
