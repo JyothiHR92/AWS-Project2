@@ -1,3 +1,4 @@
+Project : ITOTS
 
 University Name: http://www.sjsu.edu/
 
@@ -78,15 +79,25 @@ Sample Language Course:
 ![Sample Language Course](https://github.com/prar1612/AWS-Project2/blob/master/Images/languageCourse.png)
 
 Pre-requisites Set Up in AWS Account
+
     • AWS R53 
+    
     • AWS CloudFront
+    
     • AWS S3
+    
     • AWS EC2
+    
     • AWS Lambda
+    
     • AWS Cognito
+    
     • AWS Rekognition
+    
     • AWS Polly
+    
     • AWS DynamoDB
+    
     • AWS SES
     
 
