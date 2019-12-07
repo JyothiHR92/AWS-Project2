@@ -6,11 +6,11 @@ Course: [Cloud Technologies](http://info.sjsu.edu/web-dbgen/catalog/courses/CMPE
 Professor [Sanjay Garje](https://www.linkedin.com/in/sanjaygarje/)
 
 Students: 
-Manasi Sadanand Pai
+[Manasi Sadanand Pai](https://www.linkedin.com/in/manasi-pai-527421198/)
 
-Prarthana Hemanth
+[Prarthana Hemanth](https://www.linkedin.com/in/prarthanahemanth/)
 
-Akanksha Jaiswal
+[Akanksha Jaiswal](https://www.linkedin.com/in/akanksha-jaiswal-53395960/)
 
 
 Project Introduction:
@@ -77,10 +77,18 @@ Sample Quiz:
 Sample Language Course:
 ![Sample Language Course](https://github.com/prar1612/AWS-Project2/blob/master/Images/languageCourse.png)
 
+Pre-requisites Set Up in AWS Account
+    • AWS R53 
+    • AWS CloudFront
+    • AWS S3
+    • AWS EC2
+    • AWS Lambda
+    • AWS Cognito
+    • AWS Rekognition
+    • AWS Polly
+    • AWS DynamoDB
+    • AWS SES
+    
 
-
-
-Pre-requisites Set Up
-Here include bullet point list of resources one need to configure in their cloud account. (E.g. For AWS: S3 buckets, CloudFront etc)
 List of required software to download locally (E.g. Spring, JDK, Eclipse IDE etc. )
 Local configuration
