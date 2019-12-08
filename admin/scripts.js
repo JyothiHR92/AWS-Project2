@@ -23,7 +23,26 @@ document.getElementById("sayButton").onclick = function(){
 	  });
 }
 
+document.getElementById("delButton").onclick = function(){
 
+	var postId = $('#postId').val();
+
+	$.ajax({
+	      url: API_ENDPOINT + '?postId='+postId,
+	      type: 'DELETE',
+		  success: function (response) {
+
+		  	$('#posts tr').slice(1).remove();
+		jQuery.each(response, function(i,data) {
+				$("#posts").closest("tr").remove();
+	        });
+				},
+		  error: function () {
+						alert("error");
+				}
+		});
+
+}
 document.getElementById("searchButton").onclick = function(){
 
 	var postId = $('#postId').val();
