@@ -8,16 +8,10 @@ var bodyParser = require('body-parser');
 var config = require('/home/ec2-user/config.js');
 var availableLanguages = ['hindi', 'french', 'spanish', 'english']
 var port = "3000"
-var domain = "course.manasipai.com"
+var domain = config.server
 var protocol = "http"
 var home_url = protocol+"://"+domain+":"+port
 var S3_url = "https://studentcourse.s3.amazonaws.com"
-//var home_url = domain+":"+port
-
-console.log(home_url);
-
-//var indexRouter = require('./routes/index');
-//var usersRouter = require('./routes/users');
 
 var app = express();
 
@@ -40,7 +34,6 @@ app.set('view engine', 'jade');
 app.get('/', function(req, res, next) {
   res.render('index', { title: 'Welcome Tots!', server_url: home_url });
 });
-
 
 app.get('/pollyCourse', function (req, res) {
   res.render('pollyHome', {title: 'Home', server_url: home_url});
@@ -74,7 +67,7 @@ app.get('/pollyCourse/:language/:id', async function (req, res) {
   var url_parts = req.url.split('/').slice(2);
   var voiceNum = url_parts[1];
   var language = url_parts[0];
- if (language == 'hindi'){
+  if (language == 'hindi'){
     voice = 'Aditi';
   }
   else if (language == 'english'){
@@ -116,10 +109,8 @@ data =  await docClient.query(itemCountParams).promise();
 catch (err) {
         console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
 }
-console.log("outside");
-console.log("voice_count: "+voice_count+" voiceNum: "+voiceNum);
   var phraseID = voice+'_Phrase'+voiceNum
-  var params = {
+    var params = {
     TableName : "pollyCourse",
     KeyConditionExpression: "#id = :id",
     ExpressionAttributeNames:{
@@ -136,11 +127,8 @@ docClient.query(params, function(err, data) {
         console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
     } else {
         console.log("Query succeeded.");
-       // console.log(data);
-       // console.log(data.Items[0]);
         var nextSlide = parseInt(voiceNum)+1;
-        var previousSlide = parseInt(voiceNum)-1;
-                var next_url = home_url+'/pollyCourse/'+language+'/'+nextSlide;
+        var next_url = home_url+'/pollyCourse/'+language+'/'+nextSlide;
         console.log(last_slide);
         res.render('slide', { title: 'Course', text: data.Items[0].text, server_url: home_url, next_url: next_url, audio_url:data.Items[0].url, last_slide: last_slide});
 
@@ -152,7 +140,7 @@ app.get('/learningCourse/:categories/:id', function (req, res) {
   //console.log("here");
   //var voice = 'Aditi';
   var url_parts = req.url.split('/').slice(2);
-    var category = url_parts[0];
+  var category = url_parts[0];
   var categoryNum = url_parts[1];
   var imageID = category+'/'+category+'_'+categoryNum
   console.log(imageID);
@@ -160,7 +148,7 @@ app.get('/learningCourse/:categories/:id', function (req, res) {
     TableName : "courseImages",
     KeyConditionExpression: "#id = :id",
     ExpressionAttributeNames:{
-      "#id": "filename"
+          "#id": "filename"
 
     },
     ExpressionAttributeValues: {
@@ -178,11 +166,10 @@ docClient.query(params, function(err, data) {
         var nextSlide = parseInt(categoryNum)+1;
         var previousSlide = parseInt(categoryNum)-1;
         console.log(previousSlide)
-//        var previous_url = home_url+'/pollyCourse/'+language+'/'+previousSlide;
- //       res.render('slide', { title: 'Course', text: data.Items[0].text, previous_url: previous_url, audio_url:data.Items[0].url});
         var next_url = home_url+'/learningCourse/'+category+'/'+nextSlide;
         res.render('learningslide', { title: 'Course', server_url: home_url, id: categoryNum, folder: category, text: data.Items[0].text, next_url: next_url, S3url:data.Items[0].S3url});
-            }
+
+    }
 });
 });
 app.get('/learningCourse/:categories/quiz/:id', function (req, res) {
@@ -198,7 +185,7 @@ app.get('/learningCourse/:categories/quiz/:id', function (req, res) {
   console.log(randomCategoryNum);
   var wrongImageURL = S3_url+'/'+category+'/'+category+'_quiz_'+randomCategoryNum+'.jpg';
   console.log(wrongImageURL);
-  var image1ID = category+'/'+category+'_quiz_'+categoryNum
+    var image1ID = category+'/'+category+'_quiz_'+categoryNum
   //var image2ID = category+'/'+category+'_quiz_'+randomCategoryNum
   console.log(image1ID);
   //console.log(image2ID);
@@ -213,15 +200,15 @@ app.get('/learningCourse/:categories/quiz/:id', function (req, res) {
       ":id": image1ID
     }
 };
+
 docClient.query(params1, function(err, data) {
     if (err) {
         console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
     } else {
-             var nextSlide = parseInt(categoryNum)+1;
+          var nextSlide = parseInt(categoryNum)+1;
           var next_url = home_url+'/learningCourse/'+category+'/quiz/'+nextSlide;
           var rightImageURL = data.Items[0].S3url;
           console.log(rightImageURL);
-         // console.log(wrongImageURL);
           var rightImageText = data.Items[0].text;
           var rightImageLabel = data.Items[0].labels[0];
           console.log(rightImageLabel);
@@ -232,13 +219,13 @@ docClient.query(params1, function(err, data) {
                 var firstVal = 10;
                 var secondVal = 20;
           }
-                    else if (imageFlag == 2){
+          else if (imageFlag == 2){
                 var firstImage = wrongImageURL;
                 var secondImage = rightImageURL;
                 var firstVal = 20;
-                var secondVal = 10;
+                                var secondVal = 10;
           }
-                    res.render('quiz',
+          res.render('quiz',
                 {
                 title: 'quiz',
                 quiz_label_right: rightImageLabel,
@@ -259,6 +246,7 @@ docClient.query(params1, function(err, data) {
 
 });
 });
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -269,8 +257,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//app.use('/', indexRouter);
-//app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
