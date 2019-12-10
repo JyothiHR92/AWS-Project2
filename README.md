@@ -97,7 +97,13 @@ Pre-requisites Set Up in AWS Account
     • AWS DynamoDB
     
     • AWS SES
-    
+  
+Below packages need to be installed on local machine
 
-List of required software to download locally (E.g. Spring, JDK, Eclipse IDE etc. )
-Local configuration
+• Node.js pkg
+
+• express generator
+
+• aws-sdk package
+
+• Nginix
